@@ -66,16 +66,16 @@ The central discipline:
 An 18-stage pipeline with two structural gates (Stage 0 triage, Stage 9-A synthesis) and an explicit Go/No-Go condition on every stage. The v3.3 signature is the enforced separation of **DISCOVER → CROSS-DISCOVER → VERIFY**:
 
 ```mermaid
-flowchart LR
-    subgraph D["DISCOVER"]
-        direction LR
-        S0["0 · Triage"] --> S1["1 · Ingestion"] --> S2["2 · Explicit E0"] --> S3["3 · Closure E1"] --> S4["4 · Entailed E2"] --> S5["5 · Structural E3"] --> S6["6 · Cross-source E4"] --> S7["7 · Objectives"] --> S8["8 · Mechanisms"] --> S9["9 · Classification"]
+flowchart TB
+    subgraph DISCOVER["STAGE 0–9 · DISCOVER — decompress the artifact"]
+        direction TB
+        S0["0 · Triage"] --> S1["1 · Ingestion"] --> S2["2 · Explicit · E0"] --> S3["3 · Closure · E1"] --> S4["4 · Entailed · E2"] --> S5["5 · Structural · E3"] --> S6["6 · Cross-source · E4"] --> S7["7 · Objectives"] --> S8["8 · Mechanisms"] --> S9["9 · Classification"]
     end
-    S9 --> S9A["9-A · Cross-Discovery Synthesis"]
-    S9A --> V
-    subgraph V["VERIFY"]
-        direction LR
-        S10["10 · Verification"] --> S11["11 · Value (LIV)"] --> S12["12 · Gaps"] --> S13["13 · Hypotheses"] --> S14["14 · Experiments"] --> S15["15 · Info Gain"] --> S16["16 · Next Observation"] --> S17["17 · Residuals E6"] --> S18["18 · Audit A–M"]
+    S9 --> S9A["9-A · CROSS-DISCOVER — Cross-Discovery Synthesis"]
+    S9A --> S10
+    subgraph VERIFY["STAGE 10–18 · VERIFY — locate uncertainty precisely"]
+        direction TB
+        S10["10 · Verification"] --> S11["11 · Value · LIV"] --> S12["12 · Gaps"] --> S13["13 · Hypotheses"] --> S14["14 · Experiments"] --> S15["15 · Info Gain"] --> S16["16 · Next Observation"] --> S17["17 · Residuals · E6"] --> S18["18 · Audit A–M"]
     end
 ```
 
