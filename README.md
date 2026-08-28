@@ -10,42 +10,87 @@
 
 **Epistemic Decompression · Verification · Mechanism Isolation · Experiment Design**
 
+<p align="center">
+<b>You do not summarize. You decompress.</b>
+</p>
+
+<p align="center">
+LIDE transforms an artifact into a structured epistemic representation — separating what is <em>stated</em> from what is <em>derivable</em>, what is <em>entailed</em> from what is <em>hypothesized</em>, and what is <em>genuinely unknown</em> from what was merely never calculated.
+</p>
+
 <br>
 
-![version](https://img.shields.io/badge/version-v3.3-2b6cb0?style=flat-square)
-![pipeline](https://img.shields.io/badge/pipeline-18_stages%20%2B_2_gates-c05621?style=flat-square)
-![invariants](https://img.shields.io/badge/invariants-16_hard--coded-6b46c1?style=flat-square)
-![spec](https://img.shields.io/badge/spec-Skill.md-1a202c?style=flat-square&logo=markdown&logoColor=white)
+[![version](https://img.shields.io/badge/version-v3.3-2b6cb0?style=flat-square)](https://github.com/Michaelrobins938/lide-v3.3)
+[![pipeline](https://img.shields.io/badge/pipeline-18_stages%20%2B_2_gates-c05621?style=flat-square)](https://github.com/Michaelrobins938/lide-v3.3)
+[![invariants](https://img.shields.io/badge/invariants-16_hard--coded-6b46c1?style=flat-square)](https://github.com/Michaelrobins938/lide-v3.3)
+[![spec](https://img.shields.io/badge/spec-Skill.md-1a202c?style=flat-square&logo=markdown&logoColor=white)](https://github.com/Michaelrobins938/lide-v3.3)
+[![license](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://github.com/Michaelrobins938/lide-v3.3/blob/main/LICENSE)
+[![lang](https://img.shields.io/badge/language-Markdown%20%26%20LaTeX-1a202c?style=flat-square)](https://github.com/Michaelrobins938/lide-v3.3)
 
 </div>
 
 ---
 
-> **You do not summarize. You decompress.**
->
-> LIDE transforms an artifact into a structured epistemic representation — separating what is *stated* from what is *derivable*, what is *entailed* from what is *hypothesized*, and what is *genuinely unknown* from what was merely never calculated.
+## About
+
+LIDE is a **defensible information maximizer**, not an inference maximizer. Given any artifact — a patent, a paper, a poem, a proof — it determines what is *forced to be true*, what is *silently assumed*, where claims become *unfalsifiable*, and which single observation would most efficiently move the epistemic state.
+
+```
+max I_defensible   subject to   P(unsupported inference) → 0
+```
+
+Less information with stronger provenance beats more information with weaker epistemic status. The engine continuously maps the boundary:
+
+```
+Already known → Mathematically recoverable → Logically entailed → Structurally required
+→ Externally supported → Conditionally plausible → Hypothesized → Experimentally testable → Unknown
+```
+
+The purpose is not to eliminate uncertainty. It is to **locate uncertainty precisely**, explain why it exists, and identify the observation that would reduce it most efficiently.
 
 ---
 
-## Contents
+## Tags
 
-- [The problem LIDE solves](#the-problem-lide-solves)
-- [How it works](#how-it-works)
-- [The epistemic ledger](#the-epistemic-ledger)
-- [The sixteen invariants](#the-sixteen-invariants)
-- [What v3.3 added](#what-v33-added)
-- [Case studies](#case-studies)
-- [Repository layout](#repository-layout)
-- [Design philosophy](#design-philosophy)
-- [Citing LIDE](#citing-lide)
+### By Domain
+
+| Tag | Description |
+|---|---|
+| `epistemic-decompression` | Core methodology — extracting what an artifact forces to be true |
+| `latent-discovery` | Finding hidden structure inside explicit text |
+| `verification-taxonomy` | V0–V5 state machine for evidence grading |
+| `deterministic-closure` | Algebraic/logical derivation before declaring gaps |
+| `cross-discovery` | Relational synthesis across multiple findings |
+| `experiment-design` | Discriminating experiments with falsifiers |
+| `mechanism-isolation` | Separating competing explanations via intervention |
+| `artifact-agnostic` | Protocol applies to patents, poems, proofs, and everything between |
+
+### By Method
+
+| Tag | Description |
+|---|---|
+| `epistemic-classes` | E0–E6 taxonomy of claim types |
+| `information-value` | LIV scoring: N × R × Rel × A |
+| `closure-before-gap` | Exhaust derivable routes before labeling missing |
+| `evidence-hygiene` | Every proposition carries class × verification coordinates |
+| `anti-hallucination` | Invariants preventing plausible-inference-as-fact |
+| `materiality-gating` | Depth scales to artifact complexity and consequence |
+
+### By Stage
+
+| Tag | Description |
+|---|---|
+| `stage-0-triage` | Artifact type, applicability flags, depth tier |
+| `stage-3-closure` | Deterministic derivation with named techniques |
+| `stage-9-classification` | Recoverable / Conditional / Missing-but-identifiable |
+| `stage-9a-crossdiscover` | Relational sweep across all classified items |
+| `stage-18-audit` | Thirteen-point final epistemic audit |
 
 ---
 
 ## The problem LIDE solves
 
 Summarizers compress. LIDE interrogates.
-
-Given any artifact — a patent, a paper, a poem, a proof — a summary tells you what it says. LIDE determines what it **forces to be true**, what it **silently assumes**, where its claims become **unfalsifiable**, and which single observation would most efficiently move the epistemic state.
 
 Three failure modes the engine is built to prevent:
 
@@ -91,7 +136,7 @@ A pipeline that verifies each finding as it is produced never notices that three
 | 3 | Deterministic Closure | E1 derivations, each naming its technique |
 | 4 | Entailed Consequences | E2 with assumptions listed |
 | 5 | Structural Constraints | E3 (symmetry, conservation, dimensionality…) |
-| 6 | Cross-Source Knowledge | E4 with provenance |
+| 6 | Cross-source Knowledge | E4 with provenance |
 | 7 | Objectives & Assumptions | stated vs. operational objective; full assumption inventory |
 | 8 | Competing Explanations | mechanism graph + isolation matrix |
 | 9 | Latent Classification | Recoverable / Conditional / Missing-but-identifiable |
@@ -212,14 +257,18 @@ The same 18-stage machinery applied to fragmentary Greek hexameter:
 ```
 lide-v3.3/
 ├── README.md                           ← you are here
+├── ABOUT.md                            # project mission, scope, and philosophy
+├── TAGS.md                             # structured tag taxonomy
 ├── Skill.md                            # complete v3.3 specification:
 │                                       #   invariants · taxonomies · 18-stage pipeline
 │                                       #   technique library · special operators · output contract
+├── LICENSE                             # MIT License
+├── CONTRIBUTING.md                     # contributor guidelines
 ├── assets/
-│   ├── banner.jpg                      # cover art (2K)
-│   └── banner-hd.jpg                   # cover art (HD)
+│   ├── banner.jpg                      # cover art (2K, 2752×1536)
+│   └── banner-hd.jpg                   # cover art (HD, 1376×768)
 ├── reports/
-│   ├── tesla_us685954_lide_run.md      # full-depth run: Tesla US 685,954
+│   ├── tesla_us685954_lide_run.md  # full-depth run: Tesla US 685,954
 │   ├── empedocles_report.md            # full-depth run: Empedocles fragments
 │   └── tesla_run_evaluation.md         # meta-evaluation of the v3.3 run
 └── manuscript/
@@ -264,9 +313,23 @@ If you use the framework or the case-study analyses, please cite the manuscript:
 
 ---
 
+## Contributing
+
+Contributions are welcome! LIDE is a specification-driven project: any change to the pipeline, invariants, taxonomies, or technique library belongs in [`Skill.md`](Skill.md). If your contribution affects the specification, please:
+
+1. Open an issue describing the proposed change and its rationale
+2. Update the relevant section of `Skill.md` with the change and its CHANGELOG entry
+3. Add a corresponding entry to the `CHANGELOG` block at the top of `Skill.md`
+4. Verify that all 16 invariants remain satisfied
+5. Update this README if any visible surface changes
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for full guidelines.
+
+---
+
 <div align="center">
 
-**Keywords** — Epistemic Decompression · Latent Information Discovery · Verification Taxonomy · Deterministic Closure · Cross-Discovery Synthesis
+**Keywords** — Epistemic Decompression · Latent Information Discovery · Verification Taxonomy · Deterministic Closure · Cross-Discovery Synthesis · Mechanism Isolation · Experiment Design · Anti-Hallucination · Evidence Hygiene · Materiality Gating
 
 <sub>Built as a disciplined protocol for locating uncertainty precisely — and refusing to mistake imagination for recovery.</sub>
 
